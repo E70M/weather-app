@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
 class WeatherContainer extends React.Component {
 	constructor(props) {
@@ -7,8 +8,8 @@ class WeatherContainer extends React.Component {
 	}
 	render() {
 		return (
-			<div class="weather-container">
-				<p>{this.props.location}|{this.props.temperature}|{this.props.condition}</p>
+			<div className="weather-container">
+				<p>{this.props.location}	|	{this.props.temperature}	|	{this.props.condition}</p>
 			</div>
 		);
 	}

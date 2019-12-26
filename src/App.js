@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import WeatherContainer from './components/WeatherContainer';
 
 class App extends React.Component {
 	render() {
 		return (
-			<h1>Weather App</h1>
+			<div>
+				<h1>Weather App</h1>
+				<WeatherContainer location="San Diego, CA" temperature="70" condition="sunny"/>
+			</div>
 		);
 	}
 }

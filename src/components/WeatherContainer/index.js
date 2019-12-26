@@ -7,7 +7,7 @@ class WeatherContainer extends React.Component {
 	}
 	render() {
 		return (
-			<div class="weather-container">
+			<div className="weather-container">
 				<p>{this.props.location}|{this.props.temperature}|{this.props.condition}</p>
 			</div>
 		);

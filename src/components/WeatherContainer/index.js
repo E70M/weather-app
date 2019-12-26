@@ -9,7 +9,8 @@ class WeatherContainer extends React.Component {
 	render() {
 		return (
 			<div className="weather-container">
-				<p>{this.props.location}	|	{this.props.temperature}	|	{this.props.condition}</p>
+				<p className="weather-data">{this.props.location} | {this.props.temperature} | {this.props.condition}</p>
+				<button className="btn-more-info">+</button>
 			</div>
 		);
 	}

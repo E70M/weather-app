@@ -1,5 +1,7 @@
+# Local dependencies
 dist
 node_modules
+.env
 
 # General
 .DS_Store

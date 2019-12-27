@@ -11,6 +11,11 @@ class WeatherList extends React.Component {
 			reports: this.props.reports
 		};
 	}
+	componentDidUpdate(prev) {
+		if (prev.reports !== this.props.reports) {
+			this.setState({ reports: this.props.reports });
+		}
+	}
 	render() {
 		return (
 			<div className="weather-list-container">

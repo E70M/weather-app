@@ -2,6 +2,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 // We'll refer to our source and dist paths frequently, so let's store them here
 const PATH_SOURCE = path.join(__dirname, './src');
@@ -15,26 +16,19 @@ module.exports = env => {
 
 	return {
 	   mode: environment,
-	   
        devServer: {
        	contentBase: PATH_DIST,
-
        	host: 'localhost',
-
        	port: 8080,
-
       	historyApiFallback: true,
-
       	overlay: {
         	errors: true,
         	warnings: true,
       	},
        },
-
 	   entry: [
 		   path.join(PATH_SOURCE, './index.js'),
 	   ],
-
 	   output: {
 		   path: PATH_DIST,
 		   filename: 'js/[name].[hash].js',
@@ -64,11 +58,16 @@ module.exports = env => {
 			   }
 		   ],
 	   },
+	   node: { fs: 'empty' },
 	   plugins: [
       	new HtmlWebpackPlugin({
         	template: path.join(PATH_SOURCE, './index.html'),
       	}),
       	new CleanWebpackPlugin(),
+      	new Dotenv({
+  			path: './.env',
+  			safe: true
+		})
        ],
 	};
 };

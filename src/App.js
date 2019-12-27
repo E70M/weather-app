@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherList from './components/WeatherList';
 import weatherDataService from './services/weather-data';
+import temperatureConverterService from './services/temperature-converter';
 import './index.css';
 
 class App extends React.Component {
@@ -15,6 +16,12 @@ class App extends React.Component {
 			]
 		}
 		weatherDataService.exampleWeatherCall().then(res => {
+			console.log(temperatureConverterService({
+				temperature: res.main.temp,
+				feels_like: res.main.feels_like,
+				temp_max: res.main.temp_max,
+				temp_min: res.main.temp_min
+			}, res.temperatureUnits, 'fahrenheit'));
 			this.setState({
 				reports: this.state.reports.concat({
 					location: res.name,

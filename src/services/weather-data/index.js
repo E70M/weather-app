@@ -15,8 +15,10 @@ const weatherDataService = {
 	exampleWeatherCall: () => {
 		return new Promise((resolve, reject) => {
 			request(options)
-				.then(response => {
-					resolve(response);
+				.then(res => {
+					res['temperatureUnits'] = 'kelvin';
+					console.log(res);
+					resolve(res);
 				})
 				.catch(err => {
 					reject(err);

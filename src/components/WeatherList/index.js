@@ -8,6 +8,7 @@ class WeatherList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			desiredTemperature: 'kelvin',
 			reports: this.props.reports
 		};
 	}
@@ -23,7 +24,7 @@ class WeatherList extends React.Component {
 					<WeatherContainer
 						key={index}
 						location={report.location}
-						temperature={report.temperature.toString()}
+						temperature={Math.round(report.temperature).toString()}
 						condition={report.condition}
 					/>
 				)}

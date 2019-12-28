@@ -17,7 +17,6 @@ const weatherDataService = {
 			request(options)
 				.then(res => {
 					res['temperatureUnits'] = 'kelvin';
-					console.log(res);
 					resolve(res);
 				})
 				.catch(err => {

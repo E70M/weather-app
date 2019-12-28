@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import WeatherContainer from '../WeatherContainer';
+import temperatureConverterService from '../../services/temperature-converter';
 import './index.css';
 
 class WeatherList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			desiredTemperature: 'kelvin',
+			currUnits: 'kelvin',
+			desiredUnits: 'fahrenheit',
 			reports: this.props.reports
 		};
 	}
@@ -17,14 +19,24 @@ class WeatherList extends React.Component {
 			this.setState({ reports: this.props.reports });
 		}
 	}
+	handleChange(e) {
+		// TODO: add temperature units switch button
+		if (e.target.name === 'desiredUnits') {
+			this.setState({currUnits: this.state.desiredUnits});
+		}
+		this.setState({[e.target.name]: e.target.value});
+	}
 	render() {
 		return (
 			<div className="weather-list-container">
+				<p>Temperature is in degrees {this.state.desiredUnits}</p>
 				{this.state.reports.map((report, index) =>
 					<WeatherContainer
 						key={index}
 						location={report.location}
-						temperature={Math.round(report.temperature).toString()}
+						temperature={Math.round(temperatureConverterService({
+							temperature: report.temperature
+						}, this.state.currUnits, this.state.desiredUnits).temperature).toString()}
 						condition={report.condition}
 					/>
 				)}

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherList from './components/WeatherList';
 import weatherDataService from './services/weather-data';
-import temperatureConverterService from './services/temperature-converter';
 import './index.css';
 
 class App extends React.Component {
@@ -10,18 +9,12 @@ class App extends React.Component {
 		super();
 		this.state = {
 			reports: [
-				{location: 'San Diego, CA', temperature: 70, condition: 'sunny'},
-				{location: 'Seattle, WA', temperature: 40, condition: 'cloudy'},
-				{location: 'New York, NY', temperature: 43, condition: 'sunny'}
+				{location: 'San Diego, CA', temperature: 294.26, condition: 'sunny'},
+				{location: 'Seattle, WA', temperature: 277.59, condition: 'cloudy'},
+				{location: 'New York, NY', temperature: 279.26, condition: 'sunny'}
 			]
 		}
 		weatherDataService.exampleWeatherCall().then(res => {
-			console.log(temperatureConverterService({
-				temperature: res.main.temp,
-				feels_like: res.main.feels_like,
-				temp_max: res.main.temp_max,
-				temp_min: res.main.temp_min
-			}, res.temperatureUnits, 'fahrenheit'));
 			this.setState({
 				reports: this.state.reports.concat({
 					location: res.name,

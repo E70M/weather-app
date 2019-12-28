@@ -8,19 +8,23 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			reports: [
-				{location: 'San Diego, CA', temperature: 294.26, condition: 'sunny'},
-				{location: 'Seattle, WA', temperature: 277.59, condition: 'cloudy'},
-				{location: 'New York, NY', temperature: 279.26, condition: 'sunny'}
-			]
+			locations: [
+				{city: 'San Diego', country: 'US'},
+				{city: 'Los Angeles', country: 'US'},
+				{city: 'Seattle', country: 'US'},
+				{city: 'New York', country: 'US'}
+			],
+			reports: []
 		}
-		weatherDataService.exampleWeatherCall().then(res => {
-			this.setState({
-				reports: this.state.reports.concat({
-					location: res.name,
-					temperature: res.main.temp,
-					condition: res.weather[0].main
-				})
+		this.state.locations.forEach((location) => {
+			weatherDataService.getWeatherByCityName(location.city, location.country).then(res => {
+				this.setState({
+					reports: this.state.reports.concat({
+						location: res.name,
+						temperature: res.main.temp,
+						condition: res.weather[0].main
+					})
+				});
 			});
 		});
 	}

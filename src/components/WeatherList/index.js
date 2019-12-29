@@ -10,9 +10,10 @@ class WeatherList extends React.Component {
 		super(props);
 		this.state = {
 			currUnits: 'kelvin',
-			desiredUnits: 'fahrenheit',
+			desiredUnits: 'kelvin',
 			reports: this.props.reports
 		};
+		this.handleChange = this.handleChange.bind(this);
 	}
 	componentDidUpdate(prev) {
 		if (prev.reports !== this.props.reports) {
@@ -20,16 +21,17 @@ class WeatherList extends React.Component {
 		}
 	}
 	handleChange(e) {
-		// TODO: add temperature units switch button
-		if (e.target.name === 'desiredUnits') {
-			this.setState({currUnits: this.state.desiredUnits});
-		}
 		this.setState({[e.target.name]: e.target.value});
 	}
 	render() {
 		return (
 			<div className="weather-list-container">
 				<p>Temperature is in degrees {this.state.desiredUnits}</p>
+				<p>
+					<button name='desiredUnits' onClick={this.handleChange} value='fahrenheit'>Fahrenheit</button>
+				   	<button name='desiredUnits' onClick={this.handleChange} value='celsius'>Celsius</button>
+				   	<button name='desiredUnits' onClick={this.handleChange} value='kelvin'>Kelvin</button>
+				</p>
 				{this.state.reports.map((report, index) =>
 					<WeatherContainer
 						key={index}

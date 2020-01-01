@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import './index.css';
 
 class WeatherContainer extends React.Component {
@@ -14,6 +15,15 @@ class WeatherContainer extends React.Component {
 			</div>
 		);
 	}
+}
+
+WeatherContainer.propTypes = {
+	location: PropTypes.string.isRequired,
+	temperature: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	]).isRequired,
+	condition: PropTypes.string.isRequired
 }
 
 export default WeatherContainer;

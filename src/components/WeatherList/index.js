@@ -8,6 +8,7 @@ import './index.css';
 class WeatherList extends React.Component {
 	constructor(props) {
 		super(props);
+		// TODO: make default fahrenheit
 		this.state = {
 			currUnits: 'kelvin',
 			desiredUnits: 'kelvin',

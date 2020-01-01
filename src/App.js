@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherList from './components/WeatherList';
+import SearchBar from './components/SearchBar';
 import weatherDataService from './services/weather-data';
 import './index.css';
 
@@ -24,7 +25,7 @@ class App extends React.Component {
 			country: arr[1]
 		};
 		// TODO: preventing multiple listings of the same city
-		if (!this.state.locations.includes(location)) {
+		if (arr.length > 1 && !this.state.locations.includes(location)) {
 			this.setState({
 				locations: this.state.locations.concat(location)
 			});
@@ -47,14 +48,13 @@ class App extends React.Component {
 			<div>
 				<h1>Weather App</h1>
 				<form onSubmit={this.addLocation}>
-					<input
-						type="text"
-						className="input"
-						id="searchLocation"
-						name="searchLocation"
-						placeholder="Enter location"
+					<SearchBar
+						submitClass="search-bar-btn"
+						textClass="search-bar-input"
+						textId="searchLocation"
+						textName="searchLocation"
+						textPlaceholder="Enter location"
 					/>
-					<input type="submit" value="Add location" />
 				</form>
 				<WeatherList reports={this.state.reports} />
 			</div>

@@ -17,7 +17,7 @@ class WeatherList extends React.Component {
 	}
 	componentDidUpdate(prev) {
 		if (prev.reports !== this.props.reports) {
-			this.setState({ reports: this.props.reports });
+			this.setState({reports: this.props.reports});
 		}
 	}
 	handleChange(e) {

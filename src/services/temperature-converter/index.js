@@ -1,6 +1,6 @@
 function conversion(temp, curr, desired) {
 	if (curr !== 'kelvin') {
-		temp = 273.15 + (curr === 'fahrenheit' ? (5/9) * temp + 32.0 : temp);
+		temp = 273.15 + (curr === 'fahrenheit' ? (temp - 32.0) / 1.8 : temp);
 	}
 	if (desired !== 'kelvin') {
 		temp -= 273.15;

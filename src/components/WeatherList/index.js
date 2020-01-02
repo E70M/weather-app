@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import WeatherContainer from '../WeatherContainer';
-import temperatureConverterService from '../../services/temperature-converter';
 import './index.css';
 
 class WeatherList extends React.Component {
@@ -36,11 +35,9 @@ class WeatherList extends React.Component {
 				{this.state.reports.map((report, index) =>
 					<WeatherContainer
 						key={index}
-						location={report.location}
-						temperature={Math.round(temperatureConverterService({
-							temperature: report.temperature
-						}, this.state.currUnits, this.state.desiredUnits).temperature).toString()}
-						condition={report.condition}
+						report={report}
+						curr={this.state.currUnits}
+						desired={this.state.desiredUnits}
 					/>
 				)}
 			</div>
@@ -49,14 +46,7 @@ class WeatherList extends React.Component {
 }
 
 WeatherList.propTypes = {
-	reports: PropTypes.arrayOf(PropTypes.shape({
-		location: PropTypes.string.isRequired,
-		temperature: PropTypes.oneOfType([
-			PropTypes.number,
-			PropTypes.string
-		]).isRequired,
-		condition: PropTypes.string.isRequired
-	}))
+	reports: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default WeatherList;

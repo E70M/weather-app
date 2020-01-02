@@ -31,11 +31,7 @@ class App extends React.Component {
 			});
 			weatherDataService.getWeatherByCityName(location.city, location.country).then(res => {
 				this.setState({
-					reports: this.state.reports.concat({
-						location: res.name,
-						temperature: res.main.temp,
-						condition: res.weather[0].main
-					})
+					reports: this.state.reports.concat(res)
 				});
 			});
 		}

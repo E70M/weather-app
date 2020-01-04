@@ -13,3 +13,7 @@
 	height: 2em;
 	width: 40%;
 }
+
+.search-bar-input:focus {
+	outline: none;
+}

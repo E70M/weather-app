@@ -2,30 +2,54 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import DataDisplay from '../DataDisplay';
 import temperatureConverterService from '../../services/temperature-converter';
 import './index.css';
 
 class WeatherContainer extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			moreInfo: false
+		}
+		this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
+	}
+	toggleMoreInfo() {
+		this.setState({
+			moreInfo: !this.state.moreInfo
+		});
 	}
 	render() {
 		return (
 			<div className="weather-container">
-				<p className="weather-data">{this.props.report.name} | {
-					Math.round(temperatureConverterService({
-						temperature: this.props.report.main.temp
-					}, this.props.curr, this.props.desired).temperature).toString()
-				} | {this.props.report.weather[0].main}</p>
-				<button className="btn-more-info">
-					<FontAwesomeIcon icon={faPlus} />
-				</button>
+				<div>
+					<p className="weather-data">{this.props.report.name} | {
+						Math.round(temperatureConverterService({
+							temperature: this.props.report.main.temp
+						}, this.props.curr, this.props.desired).temperature).toString()
+					} | {this.props.report.weather[0].main}</p>
+					<button className="btn-more-info" onClick={this.toggleMoreInfo}>
+						{
+							!this.state.moreInfo ?
+							<FontAwesomeIcon icon={faPlus} /> :
+							<FontAwesomeIcon icon={faMinus} />
+						}
+					</button>
+				</div>
+				{
+					this.state.moreInfo ?
+					<DataDisplay
+						data={this.props.report}
+						fields={['clouds', 'coord', 'main', 'weather']}
+						type="json"
+					/> : null
+				}
 			</div>
 		);
 	}
 }
 
-// TODO: implement "more info" section
 WeatherContainer.propTypes = {
 	curr: PropTypes.string.isRequired,
 	desired: PropTypes.string.isRequired,

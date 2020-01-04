@@ -35,9 +35,10 @@ class WeatherList extends React.Component {
 				{this.state.reports.map((report, index) =>
 					<WeatherContainer
 						key={index}
-						report={report}
 						curr={this.state.currUnits}
 						desired={this.state.desiredUnits}
+						primary={['name', 'main.temp', 'weather[0].main']}
+						report={report}
 					/>
 				)}
 			</div>

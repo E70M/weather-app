@@ -41,7 +41,7 @@ class WeatherContainer extends React.Component {
 					this.state.moreInfo ?
 					<DataDisplay
 						data={this.props.report}
-						fields={['clouds', 'coord', 'main', 'weather']}
+						fields={this.props.secondary}
 						type="json"
 					/> : null
 				}

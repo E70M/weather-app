@@ -38,6 +38,7 @@ class WeatherList extends React.Component {
 						curr={this.state.currUnits}
 						desired={this.state.desiredUnits}
 						primary={['name', 'main.temp', 'weather[0].main']}
+						secondary={['clouds', 'coord', 'main', 'weather']}
 						report={report}
 					/>
 				)}

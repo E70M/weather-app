@@ -14,12 +14,13 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'eitanmyron-weather-app'
-    appName: 'weather-app'
-    package: '$(System.DefaultWorkingDirectory)'
-    customWebConfig: '-Handler iisnode -NodeStartFile server.js -appType node'
+
+#- task: AzureWebApp@1
+# inputs:
+#   azureSubscription: 'eitanmyron-weather-app - Azure'
+#   appName: 'weather-app'
+#   package: '$(System.DefaultWorkingDirectory)'
+#   customWebConfig: '-Handler iisnode -NodeStartFile server.js -appType node'
 
 - script: |
     npm install

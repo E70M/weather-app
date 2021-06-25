@@ -5,37 +5,37 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './index.css';
 
 class SearchBar extends React.Component {
-	constructor() {
-		super();
-	}
-	render() {
-		return (
-			<div className="search-bar">
-				<input
-					type="text"
-					className={this.props.textClass}
-					id={this.props.textId}
-					name={this.props.textName}
-					placeholder={this.props.textPlaceholder}
-				/>
-				<button
-					type="submit"
-					className={this.props.submitClass}
-				>
-					<FontAwesomeIcon icon={faSearch} />
-				</button>
-			</div>
-		);
-	}
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <div className="search-bar">
+        <input
+    type="text"
+    className={this.props.textClass}
+    id={this.props.textId}
+    name={this.props.textName}
+    placeholder={this.props.textPlaceholder}
+        />
+  <button
+    type="submit"
+    className={this.props.submitClass}
+        >
+    <FontAwesomeIcon icon={faSearch} />
+  </button>
+      </div>
+    );
+  }
 }
 
 SearchBar.propTypes = {
-	submitClass: PropTypes.string.isRequired,
-	submitVal: PropTypes.string,
-	textClass: PropTypes.string.isRequired,
-	textId: PropTypes.string.isRequired,
-	textName: PropTypes.string.isRequired,
-	textPlaceholder: PropTypes.string.isRequired
+  submitClass: PropTypes.string.isRequired,
+  submitVal: PropTypes.string,
+  textClass: PropTypes.string.isRequired,
+  textId: PropTypes.string.isRequired,
+  textName: PropTypes.string.isRequired,
+  textPlaceholder: PropTypes.string.isRequired
 }
 
 export default SearchBar;

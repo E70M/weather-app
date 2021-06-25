@@ -1,19 +1,19 @@
 .search-bar {
-	margin: auto;
+  margin: auto;
 }
 
 .search-bar-btn {
-	cursor: pointer;
-	height: 4em;
-	width: 4em;
+  cursor: pointer;
+  height: 4em;
+  width: 4em;
 }
 
 .search-bar-input {
-	font-size: 20px;
-	height: 2em;
-	width: 40%;
+  font-size: 20px;
+  height: 2em;
+  width: 40%;
 }
 
 .search-bar-input:focus {
-	outline: none;
+  outline: none;
 }

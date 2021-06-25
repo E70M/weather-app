@@ -1,18 +1,18 @@
 .btn-more-info {
-	display: inline-block;
-	float: right;
-	margin: 20px 0px;
+  display: inline-block;
+  float: right;
+  margin: 20px 0px;
 }
 
 .weather-container {
-	border-bottom: 1px solid black;
-	border-top: 1px solid black;
-	margin: 20px 0px;
-	padding: 5px 0px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin: 20px 0px;
+  padding: 5px 0px;
 }
 
 .weather-data {
-	display: inline-block;
-	font-family: 'Verdana', sans-serif;
-	font-size: 1.2em;
+  display: inline-block;
+  font-family: 'Verdana', sans-serif;
+  font-size: 1.2em;
 }

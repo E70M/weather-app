@@ -26,21 +26,21 @@ class WeatherList extends React.Component {
   render() {
     return (
       <div className="weather-list-container">
-  <p>Temperature is in degrees {this.state.desiredUnits}</p>
-  <p>
-    <button name='desiredUnits' onClick={this.handleChange} value='fahrenheit'>Fahrenheit</button>
-    <button name='desiredUnits' onClick={this.handleChange} value='celsius'>Celsius</button>
-    <button name='desiredUnits' onClick={this.handleChange} value='kelvin'>Kelvin</button>
-  </p>
-  {this.state.reports.map((report, index) =>
-    <WeatherContainer
-      key={index}
-      curr={this.state.currUnits}
-      desired={this.state.desiredUnits}
-      primary={['name', 'main.temp', 'weather[0].main']}
-      secondary={['clouds', 'coord', 'main', 'weather']}
-      report={report}
-    />
+        <p>Temperature is in degrees {this.state.desiredUnits}</p>
+        <p>
+          <button name='desiredUnits' onClick={this.handleChange} value='fahrenheit'>Fahrenheit</button>
+          <button name='desiredUnits' onClick={this.handleChange} value='celsius'>Celsius</button>
+          <button name='desiredUnits' onClick={this.handleChange} value='kelvin'>Kelvin</button>
+        </p>
+        {this.state.reports.map((report, index) =>
+          <WeatherContainer
+            key={index}
+            curr={this.state.currUnits}
+            desired={this.state.desiredUnits}
+            primary={['name', 'main.temp', 'weather[0].main']}
+            secondary={['clouds', 'coord', 'main', 'weather']}
+            report={report}
+          />
         )}
       </div>
     )

@@ -5,6 +5,8 @@ import weatherDataService from './services/weather-data';
 import titleize from 'titleize';
 import './index.css';
 
+const getCountryISO2 = require("country-iso-3-to-2");
+
 export default class App extends React.Component {
   constructor() {
     super();
@@ -20,13 +22,17 @@ export default class App extends React.Component {
   addLocation(e) {
     e.preventDefault();
     // TODO: ref
-    var arr = document.getElementById('searchLocation').value.split(',');
+    let arr = document.getElementById('searchLocation').value.split(',');
     if (arr.length <= 1) {
       arr = ["", ""];
     }
-    var location = {
+    let country = arr[1].trim().toUpperCase();
+    if (country.length == 3) {
+      country = getCountryISO2(country);
+    }
+    let location = {
       city: titleize(arr[0].trim()),
-      country: titleize(arr[1].trim())
+      country: country
     };
     let found = this.state.locations.find(loc => {
       return loc.city == location.city && loc.country == location.country;

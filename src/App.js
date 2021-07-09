@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import WeatherList from './components/WeatherList';
 import SearchBar from './components/SearchBar';
 import weatherDataService from './services/weather-data';
+import titleize from 'titleize';
 import './index.css';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -16,16 +16,22 @@ class App extends React.Component {
     this.addLocation = this.addLocation.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   addLocation(e) {
     e.preventDefault();
     // TODO: ref
     var arr = document.getElementById('searchLocation').value.split(',');
+    if (arr.length <= 1) {
+      arr = ["", ""];
+    }
     var location = {
-      city: arr[0],
-      country: arr[1]
+      city: titleize(arr[0].trim()),
+      country: titleize(arr[1].trim())
     };
-    // TODO: preventing multiple listings of the same city
-    if (arr.length > 1 && !this.state.locations.includes(location)) {
+    let found = this.state.locations.find(loc => {
+      return loc.city == location.city && loc.country == location.country;
+    });
+    if (found === undefined) {
       this.setState({
         locations: this.state.locations.concat(location)
       });
@@ -34,11 +40,15 @@ class App extends React.Component {
           reports: this.state.reports.concat(res)
         });
       });
+    } else {
+      alert("Location already saved");
     }
   }
+
   handleChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
   }
+
   render() {
     return (
       <div>
@@ -57,5 +67,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

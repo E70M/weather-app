@@ -22,33 +22,31 @@ export default class App extends React.Component {
   addLocation(e) {
     e.preventDefault();
     // TODO: ref
-    let arr = document.getElementById('searchLocation').value.split(',');
-    if (arr.length <= 1) {
-      arr = ["", ""];
-    }
-    let country = arr[1].trim().toUpperCase();
-    if (country.length == 3) {
-      country = getCountryISO2(country);
-    }
-    let location = {
-      city: titleize(arr[0].trim()),
-      country: country
-    };
-    let found = this.state.locations.find(loc => {
-      return loc.city == location.city && loc.country == location.country;
-    });
-    if (found === undefined) {
-      this.setState({
-        locations: this.state.locations.concat(location)
-      });
-      weatherDataService.getWeatherByCityName(location.city, location.country).then(res => {
+    // TODO: Add @babel/plugin-proposal-optional-chaining to plugins section of Babel config
+    // to enable support for experimental syntax 'optionalChaining', i.e. safe navigation (?.)
+    let query = document.querySelector('#searchLocation').value;
+    weatherDataService.getWeatherByCityName(query).then(res => {
+      let loc = weatherDataService.getCityData(res.id);
+      // TODO: update location's report, instead of not allowing an update
+      let found = this.state.locations.find(item => item.id === res.id);
+      if (!found) {
         this.setState({
+          locations: this.state.locations.concat({
+            city: loc.city,
+            // state
+            country: loc.country,
+            id: loc.id
+          }),
           reports: this.state.reports.concat(res)
         });
-      });
-    } else {
-      alert("Location already saved");
-    }
+      } else {
+        alert("Location already saved");
+      }
+    }).catch(err => {
+      // TODO: add logging
+      console.log(err);
+      alert("Could not load location")}
+    );
   }
 
   handleChange(e) {

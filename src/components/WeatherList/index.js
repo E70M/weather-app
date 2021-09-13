@@ -28,19 +28,20 @@ class WeatherList extends React.Component {
   }
 
   render() {
+    // TODO: add keys to child components (WeatherContainer?)
     return (
       <div className="weather-list-container">
         <p>Temperature is in degrees {this.state.desiredUnits}</p>
         <p>
-	  {this.state.units.map((unit) =>
-	    <button
-	      name='desiredUnits'
-	      onClick={this.handleChange}
-	      value={unit}
-	    >
-	      {titleize(unit)}
-	    </button>
-	  )}
+          {this.state.units.map((unit) =>
+            <button
+              name='desiredUnits'
+              onClick={this.handleChange}
+              value={unit}
+            >
+              {titleize(unit)}
+            </button>
+          )}
         </p>
         {this.state.reports.map((report, index) =>
           <WeatherContainer

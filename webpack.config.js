@@ -60,14 +60,14 @@ module.exports = env => {
 	   },
 	   node: { fs: 'empty' },
 	   plugins: [
-      	new HtmlWebpackPlugin({
-        	template: path.join(PATH_SOURCE, './index.html'),
-      	}),
-      	new CleanWebpackPlugin(),
-      	new Dotenv({
-  			path: './.env',
-  			safe: true
-		})
-       ],
+      new HtmlWebpackPlugin({
+				template: path.join(PATH_SOURCE, './index.html'),
+			}),
+			new CleanWebpackPlugin(),
+			new Dotenv({
+				path: './.env',
+				safe: true
+			})
+    ],
 	};
 };

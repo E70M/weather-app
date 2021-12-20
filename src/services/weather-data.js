@@ -1,5 +1,5 @@
 var request = require('request-promise');
-var locations = require('../../city.list.min.json');
+var locations = require('../city.list.min.json');
 var getCountryISO2 = require("country-iso-3-to-2");
 
 const API_KEY = process.env.OPEN_WEATHER_API_KEY;

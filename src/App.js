@@ -1,7 +1,7 @@
 import React from 'react';
-import WeatherList from './components/WeatherList';
-import SearchBar from './components/SearchBar';
-import weatherDataService from './services/weather-data';
+import WeatherList from './components/weather-list';
+import SearchBar from './components/search-bar';
+import weatherDataService from './services/weather-data.js';
 import titleize from 'titleize';
 import './index.css';
 

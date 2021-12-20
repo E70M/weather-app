@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import DataDisplay from '../DataDisplay';
-import temperatureConverterService from '../../services/temperature-converter';
-import './index.css';
+import DataDisplay from './data-display';
+import temperatureConverterService from '../services/temperature-converter';
+import '../styles/component-styles/weather-container.css';
 
 class WeatherContainer extends React.Component {
   constructor(props) {

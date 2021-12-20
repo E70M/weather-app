@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import './index.css';
+import '../styles/component-styles/search-bar.css';
 
 class SearchBar extends React.Component {
   constructor() {

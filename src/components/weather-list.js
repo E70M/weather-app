@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import WeatherContainer from '../WeatherContainer';
+import WeatherContainer from './weather-container';
 import titleize from 'titleize';
-import './index.css';
+import '../styles/component-styles/weather-list.css';
 
 class WeatherList extends React.Component {
   constructor(props) {
